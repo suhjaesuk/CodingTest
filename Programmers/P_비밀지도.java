@@ -6,7 +6,6 @@ public class P_비밀지도 {
             String[] answer = new String[n];
             String[] strArr1 = new String[n];
             String[] strArr2 = new String[n];
-            // String[] answer = {}; ["#####","# # #", "### #", "# ##", "#####"]이 나와야한다.
 
             //arr1 과 arr2 배열 요소들을 String 배열 2진수로 바꾼다.
             for (int i = 0; i < n; i++) {
