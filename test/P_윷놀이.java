@@ -1,4 +1,4 @@
-package test;
+package test; 
 //윷놀이 문제
 //등이면 1 배면 0 이 담긴 배열이 있습니다.
 //int[] arr1 = {0,1,0,0};
