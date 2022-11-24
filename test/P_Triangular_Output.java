@@ -1,4 +1,4 @@
-package test;
+package test; 
 
 public class P_Triangular_Output {
     public void solution(int star) {
