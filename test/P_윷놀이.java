@@ -16,7 +16,7 @@ public class P_윷놀이 {
 
             //조건을 등이 나온 개수만큼 나누었습니다.
             if(count==0){
-                answer="배";
+                answer="모";
             }
             if(count==1){
                 answer="걸";
