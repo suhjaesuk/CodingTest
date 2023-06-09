@@ -9,36 +9,30 @@ import java.util.StringTokenizer;
 
 public class P2018_주몽의명령 {
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        int m = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] sources = new int[n];
-        for (int i = 0; i < n; i++) {
-            sources[i] = Integer.parseInt(st.nextToken());
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        int[] sources = new int[N];
+        for (int i = 0; i < N; i++) {
+            sources[i] = scanner.nextInt();
         }
-
         Arrays.sort(sources);
-
         int answer = 0;
-        int start = 0;
-        int end = sources.length - 1;
+        int startIndex = 0;
+        int endIndex = sources.length - 1;
 
-        while (start <= end) {
-            if (sources[start] + sources[end] == m) {
+        while (startIndex < endIndex) {
+            if (sources[startIndex] + sources[endIndex] == M) {
+                endIndex--;
                 answer++;
-                start++;
-                end--;
             }
-            else if (sources[start] + sources[end] > m) {
-                end--;
-            }
-            else {
-                start++;
+            else if (sources[startIndex] + sources[endIndex] < M) {
+                startIndex++;
+            }else {
+                endIndex--;
             }
         }
-
         System.out.println(answer);
     }
 }
