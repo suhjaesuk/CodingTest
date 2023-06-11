@@ -1,7 +1,9 @@
+package BaekJoon;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Prac {
+public class P11399_ATM인출시간계산하기 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

@@ -2,7 +2,7 @@ package BaekJoon;
 
 import java.util.Scanner;
 
-public class P2750_수정렬하기 {
+public class P1517_버블소트프로그램2 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -12,17 +12,18 @@ public class P2750_수정렬하기 {
             numbers[i] = scanner.nextInt();
         }
 
+        int answer = 0;
         for (int i = 0; i < N - 1; i++) {
-            for (int j = 0; j < N -1 - i; j++) {
-                if (numbers[j] > numbers[j+1]) {
-                    int temp = numbers[j];
-                    numbers[j] = numbers[j + 1];
-                    numbers[j + 1] = temp;
+            for (int j = i + 1; j < N; j++) {
+                if (numbers[i] > numbers[j]) {
+                    int temp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                    answer++;
                 }
             }
         }
-        for (int number : numbers) {
-            System.out.println(number);
-        }
+
+        System.out.println(answer);
     }
 }
