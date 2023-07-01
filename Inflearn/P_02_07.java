@@ -4,25 +4,29 @@ import java.util.Scanner;
 
 public class P_02_07 {
 
-    public int solution(int n, int[] arr){
+    public int solution(int question, int[] scoring) {
+        int count = 0;
         int answer = 0;
-        int plusPoint = 0;
-
-        for(int i=1; i<n+1; i++){
-            if(arr[i-1]==1) plusPoint++;
-            if(arr[i-1]==0) plusPoint=0;
-            answer+=plusPoint;
+        for (int score : scoring) {
+            if (score == 1) {
+                count++;
+            }else if (score == 0) {
+                count = 0;
+            }
+            answer += count;
         }
         return answer;
     }
+
+
     public static void main(String[] args) {
         P_02_07 P = new P_02_07();
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for(int i=0; i<n; i++){
-            arr[i] = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int question = scanner.nextInt();
+        int[] scoring = new int[question];
+        for (int i = 0; i < question; i++) {
+            scoring[i] = scanner.nextInt();
         }
-        System.out.println(P.solution(n, arr));
+        System.out.println(P.solution(question, scoring));
     }
 }

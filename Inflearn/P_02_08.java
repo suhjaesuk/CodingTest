@@ -6,30 +6,33 @@ import java.util.Scanner;
 
 public class P_02_08 {
 
-    public int[] solution(int n, int[] arr){
-        int[] answer = new int[n];
-
-        for(int i=0; i<n; i++){
+    public int[] solution(int studentCount, int[] scores) {
+        int[] answer = new int[studentCount];
+        for (int i = 0; i < studentCount; i++) {
             int count = 1;
-            for(int j=0; j<n; j++){
-                if(arr[j]>arr[i]) count++;
+            for (int j = 0; j < studentCount; j++) {
+                if (scores[i] < scores[j]) {
+                    count++;
+                }
+                answer[i] = count;
             }
-            answer[i] = count;
         }
         return answer;
     }
 
+
     public static void main(String[] args) {
         P_02_08 P = new P_02_08();
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for(int i=0; i<n; i++){
-            arr[i] = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int studentCount = scanner.nextInt();
+        int[] scores = new int[studentCount];
+        for (int i = 0; i < studentCount; i++) {
+            scores[i] = scanner.nextInt();
         }
 
-        for(int x: P.solution(n, arr)){
-            System.out.println(x+" ");
+        int[] answers = P.solution(studentCount, scores);
+        for (int answer : answers) {
+            System.out.print(answer + " ");
         }
     }
 }

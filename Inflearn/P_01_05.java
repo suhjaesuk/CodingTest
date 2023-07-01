@@ -3,28 +3,33 @@ package Inflearn;
 import java.util.Scanner;
 
 public class P_01_05 {
-    public String solution(String str) {
-        String answer = "";
-        char[] c = str.toCharArray();
-        int lt = 0, rt = str.length() - 1;
-        while (lt < rt) {
-            if (!Character.isAlphabetic(c[lt])) {lt++;
-            } else if(!Character.isAlphabetic(c[rt])) {rt--;
+
+    public String solution(String word) {
+        char[] alphabets = word.toCharArray();
+        int left = 0;
+        int right = alphabets.length - 1;
+        while (left < right) {
+            if (!Character.isAlphabetic(alphabets[left])) {
+                left++;
+            }
+            else if (!Character.isAlphabetic(alphabets[right])) {
+                right--;
             } else {
-                char tmp = c[lt];
-                c[lt]=c[rt];
-                c[rt]=tmp;
-                lt++;
-                rt--;
+                char tmp = alphabets[left];
+                alphabets[left] = alphabets[right];
+                alphabets[right] = tmp;
+                left++;
+                right--;
             }
         }
-        answer = String.valueOf(c);
-        return answer;
+        String reversedWord = String.valueOf(alphabets);
+        return reversedWord;
     }
-    public static void main (String[]args){
-        P_01_05 T = new P_01_05();
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        System.out.println(T.solution(str));
+
+    public static void main(String[] args) {
+        P_01_05 P = new P_01_05();
+        Scanner scanner = new Scanner(System.in);
+        String word = scanner.next();
+        System.out.println(P.solution(word));
     }
 }

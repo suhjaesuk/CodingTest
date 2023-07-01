@@ -4,42 +4,62 @@ import java.util.Scanner;
 
 public class P_02_09 {
 
-    public int solution(int n, int[][] arr){
-        int answer = 0;
-        int rowSum, columnSum, diagonalSum1, diagonalSum2 ;
-
-        for(int i=0; i<n; i++){
-            rowSum = columnSum =0;
-            for(int j=0; j<n; j++){
-                rowSum+=arr[i][j];
-                columnSum+=arr[j][i];
+    public int solution(int size, int[][] grid) {
+        int maxSum = 0;
+        //가로 합 구하기
+        for (int i = 0; i < size; i++) {
+            int sum = 0;
+            for (int j = 0; j < size; j++) {
+                sum += grid[i][j];
             }
-            answer = Math.max(answer, rowSum);
-            answer = Math.max(answer, columnSum);
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
         }
 
-        diagonalSum1=diagonalSum2=0;
-
-        for(int i=0; i<n; i++) {
-        diagonalSum1+=arr[i][i];
-        diagonalSum2+=arr[i][n-i-1];
+        //세로 합 구하기
+        for (int i = 0; i < size; i++) {
+            int sum = 0;
+            for (int j = 0; j < size; j++) {
+                sum += grid[j][i];
+            }
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
         }
-        answer = Math.max(answer, diagonalSum1);
-        answer = Math.max(answer, diagonalSum2);
 
-        return answer;
+        //대각선 합 구하기
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            sum += grid[i][i];
+        }
+        if (sum > maxSum) {
+            maxSum = sum;
+        }
+
+        //대각선 합 구하기
+        sum = 0;
+        for (int i = size - 1; i <= 0; i--) {
+            sum += grid[i][i];
+        }
+        if (sum > maxSum) {
+            maxSum = sum;
+        }
+
+        return maxSum;
     }
+
 
     public static void main(String[] args) {
         P_02_09 P = new P_02_09();
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[][] arr = new int[n][n];
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                arr[i][j] = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+        int[][] grid = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                grid[i][j] =scanner.nextInt();
             }
         }
-        System.out.println(P.solution(n,arr));
+        System.out.println(P.solution(size, grid));
     }
 }

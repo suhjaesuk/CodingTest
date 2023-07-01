@@ -11,7 +11,7 @@ public class P_01_08 {
         if(str.equals(tmp)) {
             answer="YES";
         }
-        return answer;
+        return tmp;
     }
 
     public static void main(String[] args) {

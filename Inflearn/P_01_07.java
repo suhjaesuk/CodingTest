@@ -3,21 +3,21 @@ package Inflearn;
 import java.util.Scanner;
 
 public class P_01_07 {
-    public String solution(String str) {
-        String answer = "YES";
-        str=str.toUpperCase();
-        char[] c = str.toCharArray();
-        int rt =str.length()-1;
-
-        for(int i=0; i<str.length()/2; i++) {
-            if(c[i]!=c[rt-i]) answer ="NO";
+    public String solution(String word) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String answer = "NO";
+        word = word.toUpperCase();
+        String reverseWord = stringBuilder.append(word).reverse().toString();
+        if (word.equals(reverseWord)) {
+            answer = "YES";
         }
         return answer;
     }
-    public static void main (String[]args){
-        P_01_07 T = new P_01_07();
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        System.out.println(T.solution(str));
+
+    public static void main(String[] args) {
+        P_01_07 P = new P_01_07();
+        Scanner scanner = new Scanner(System.in);
+        String word = scanner.next();
+        System.out.println(P.solution(word));
     }
 }

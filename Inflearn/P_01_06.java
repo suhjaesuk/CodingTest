@@ -3,21 +3,24 @@ package Inflearn;
 import java.util.Scanner;
 
 public class P_01_06 {
-    public String solution(String str) {
-        String answer = "";
-        char[] c = str.toCharArray();
-        for(int i=0; i<str.length(); i++) {
-            if (str.indexOf(c[i])==i) {
-                answer += c[i];
+
+    public String solution(String word) {
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] alphabets = word.toCharArray();
+        for (int i = 0; i < alphabets.length; i++) {
+            if (word.indexOf(alphabets[i]) == i) {
+                stringBuilder.append(alphabets[i]);
             }
         }
+        String answer = stringBuilder.toString();
         return answer;
     }
-    public static void main (String[]args){
-        P_01_06 T = new P_01_06();
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        System.out.println(T.solution(str));
+
+    public static void main(String[] args) {
+        P_01_06 P = new P_01_06();
+        Scanner scanner = new Scanner(System.in);
+        String word = scanner.next();
+        System.out.println(P.solution(word));
     }
 }
 
