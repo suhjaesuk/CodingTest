@@ -4,16 +4,6 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-class Point {
-    int x;
-    int y;
-
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
 public class P_08_11 {
     static int size = 7;
     static boolean[][] visit;
