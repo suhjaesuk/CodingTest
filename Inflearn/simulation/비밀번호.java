@@ -6,7 +6,49 @@ class 비밀번호 {
     static int[] dy = {1, 1, 0, -1, -1, -1, 0, 1};
     final static int DIRECTION_SIZE = 8;
 
-    public int solution(int[] keypad, String password){
+
+    public int solution(int[] keypad, String password) {
+        int answer = 0;
+        int[][] realKeypad = new int[3][3];
+        int[][] distance = new int[10][10];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                realKeypad[i][j] = keypad[i * 3 + j];
+            }
+        }
+        for (int i = 0; i < 10; i++) {
+            // default를 2로 지정
+            Arrays.fill(distance[i], 2);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            // 자기 자신과의 거리는 0
+            distance[i][i] = 0;
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int from = realKeypad[i][j];
+                for (int k = 0; k < 8; k++) {
+                    int nx = i + dx[k];
+                    int ny = j + dy[k];
+                    if (nx >= 0 && nx < 3 && ny >= 0 && ny < 3) {
+                        // 범위 안에 있으면 거리가 1
+                        int to = realKeypad[nx][ny];
+                        distance[from][to] = 1;
+                    }
+                }
+            }
+        }
+
+        for (int i = 1; i < password.length(); i++) {
+            int from = (int)password.charAt(i - 1) - 48;
+            int to = (int)password.charAt(i) - 48;
+            answer += distance[from][to];
+        }
+
+        return answer;
+    }
+    public int solution1(int[] keypad, String password){
         int answer = 0;
         char[] numbers = password.toCharArray();
         int[][] realKeypad = new int[3][3];
